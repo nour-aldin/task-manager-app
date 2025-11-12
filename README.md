@@ -33,10 +33,14 @@ A modern, feature-rich task management application built with React Native, Type
 
 ## Installation & Setup
 
-### 1. Clone or Navigate to the Project
+### 1. Clone the Project
 
 ```bash
-cd /home/nour/Desktop/react-native/task-manager-app
+git clone git@github.com:nour-aldin/task-manager-app.git
+```
+
+```bash
+cd task-manager-app
 ```
 
 ### 2. Install Dependencies
