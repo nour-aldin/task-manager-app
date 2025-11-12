@@ -42,6 +42,7 @@ const defaultFilter: TaskFilter = {
 };
 
 const defaultSort: TaskSort = {
+  sortBy: "createdAt",
   order: "asc",
 };
 

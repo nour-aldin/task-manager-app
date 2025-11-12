@@ -3,6 +3,7 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { useTasks } from "@/contexts/tasks-context";
 import { TaskStatus } from "@/types";
+import { useTheme } from "@react-navigation/native";
 import { router, useLocalSearchParams } from "expo-router";
 import {
   Alert,
@@ -14,6 +15,7 @@ import {
 } from "react-native";
 
 export default function TaskDetailScreen() {
+  const { dark } = useTheme();
   const { taskId } = useLocalSearchParams<{ taskId: string }>();
   const { tasks, deleteTask, updateTask } = useTasks();
 
@@ -66,7 +68,14 @@ export default function TaskDetailScreen() {
                 updateTask(task.id, { ...task, status: "pending" })
               }
             >
-              <Text style={styles.deleteButtonText}>Mark as In Pending</Text>
+              <Text
+                style={[
+                  styles.deleteButtonText,
+                  { color: dark ? "#fff" : "#000" },
+                ]}
+              >
+                Mark as In Pending
+              </Text>
             </TouchableOpacity>
           )}
           {task.status !== "in-progress" && (
@@ -76,7 +85,14 @@ export default function TaskDetailScreen() {
                 updateTask(task.id, { ...task, status: "in-progress" })
               }
             >
-              <Text style={styles.deleteButtonText}>Mark as In Progress</Text>
+              <Text
+                style={[
+                  styles.deleteButtonText,
+                  { color: dark ? "#fff" : "#000" },
+                ]}
+              >
+                Mark as In Progress
+              </Text>
             </TouchableOpacity>
           )}
           {task.status !== "completed" && (
@@ -86,7 +102,14 @@ export default function TaskDetailScreen() {
                 updateTask(task.id, { ...task, status: "completed" })
               }
             >
-              <Text style={styles.editButtonText}>Mark as Completed</Text>
+              <Text
+                style={[
+                  styles.deleteButtonText,
+                  { color: dark ? "#fff" : "#000" },
+                ]}
+              >
+                Mark as Completed
+              </Text>
             </TouchableOpacity>
           )}
         </View>

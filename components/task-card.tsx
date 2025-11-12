@@ -1,4 +1,5 @@
 import { Task, TaskPriority, TaskStatus } from "@/types";
+import { useTheme } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ThemedText } from "./themed-text";
 
@@ -8,8 +9,16 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task, onPress }: TaskCardProps) {
+  const { dark } = useTheme();
+  console.log({ dark });
   return (
-    <TouchableOpacity style={styles.taskCard} onPress={onPress}>
+    <TouchableOpacity
+      style={[
+        styles.taskCard,
+        { backgroundColor: dark ? "#222222ff" : "#ffffff" },
+      ]}
+      onPress={onPress}
+    >
       <View style={styles.taskHeader}>
         <ThemedText type="defaultSemiBold" style={styles.taskTitle}>
           {task.title}
@@ -55,7 +64,6 @@ const getStatusColor = (status: TaskStatus) => {
 
 const styles = StyleSheet.create({
   taskCard: {
-    backgroundColor: "#222222ff",
     borderRadius: 12,
     padding: 16,
     marginBottom: 12,
